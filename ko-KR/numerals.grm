@@ -52,7 +52,17 @@ hundreds = Optimize[
     | (ones_1_9 delzero? add_hundred tens)
 ];
 
-SinoCardinal = ones | tens | hundreds;
+add_thousand = "".utf8 : "천".utf8;
+thousands = Optimize[
+    (
+        (delone | ones_2_9)
+        add_thousand
+        (delzero{2} (delzero | ones_1_9))
+    )
+    | (ones_1_9 delzero{0,2} add_thousand hundreds)
+];
+
+SinoCardinal = ones | tens | hundreds | thousands;
 
 NativeCardinal = "".utf8;
 
