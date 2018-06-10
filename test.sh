@@ -16,6 +16,6 @@ fi
 
 while read line
 do
-    echo -n "$line"
-     <<< "${line}" thraxrewrite-tester --far="${FAR}" --rules="${RULE}" | grep -Po "(?<=Output string:) (.+)"
+    echo -n "$line	"
+     <<< "${line}" thraxrewrite-tester --far="${FAR}" --rules="${RULE}" | grep -Po "(?<=Output string: )(.+)"
 done < /dev/stdin
