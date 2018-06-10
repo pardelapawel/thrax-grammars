@@ -1,0 +1,48 @@
+Number 	Hanja 	Hangul 	Latin 	Hangul 	Latin
+0 	零[1]/空 	영, 령, 공 	yeong, ryeong, gong 	— 	—
+1 	一 	일 	il 	하나 	hana
+2 	二 	이 	i 	둘 	dul
+3 	三 	삼 	sam 	셋 	set
+4 	四 	사 	sa 	넷 	net
+5 	五 	오 	o 	다섯 	daseot
+6 	六 	육, 륙 	yuk, ryuk 	여섯 	yeoseot
+7 	七 	칠 	chil 	일곱 	ilgop
+8 	八 	팔 	pal 	여덟 	yeodeol
+9 	九 	구 	gu 	아홉 	ahop
+10 	十 	십 	sip 	열 	yeol
+11 	十一 	십일 	sib-il 	열하나 	yeol-hana
+12 	十二 	십이 	sib-i 	열둘 	yeol-dul
+13 	十三 	십삼 	sip-sam 	열셋 	yeol-set
+14 	十四 	십사 	sip-sa 	열넷 	yeol-net
+15 	十五 	십오 	sib-o 	열다섯 	yeol-daseot
+16 	十六 	십육, 십륙 	sim-nyuk, sip-ryuk [note 1] 	열여섯 	yeol-lyeoseot
+17 	十七 	십칠 	sip-chil 	열일곱 	yeor-ilgop
+18 	十八 	십팔 	sip-pal 	열여덟 	yeol-lyeodeol
+19 	十九 	십구 	sip-gu 	열아홉 	yeor-ahop
+20 	二十 	이십 	i-sip 	스물 	seumul
+30 	三十 	삼십 	sam-sip 	서른 	seoreun
+40 	四十 	사십 	sa-sip 	마흔 	maheun
+50 	五十 	오십 	o-sip 	쉰 	swin
+60 	六十 	육십, 륙십 	yuk-sip, ryuk-sip 	예순 	yesun
+70 	七十 	칠십 	chil-sip 	일흔 	ilheun
+80 	八十 	팔십 	pal-sip 	여든 	yeodeun
+90 	九十 	구십 	gu-sip 	아흔 	aheun
+100 	百 	백 	baek 	온[note 2] 	on
+1,000 	千 	천 	cheon 	즈믄[note 2] 	jeumeun
+10,000 	萬 	만 	man 	드먼 / 골[note 2] 	deumeon / gol
+100,000,000 	億 	억 	eok 	잘[note 2] 	jal
+1012 	兆 	조 	jo 	울[note 2] 	ul
+1016 	京 	경 	gyeong 	— 	—
+1020 	垓 	해 	hae 	— 	—
+1024 	秭 	자[note 3] 	ja 	— 	—
+1028 	穰 	양[note 3] 	yang 	— 	—
+1032 	溝 	구[note 3] 	gu 	— 	—
+1036 	澗 	간[note 3] 	gan 	— 	—
+1040 	正 	정[note 3] 	jeong 	— 	—
+1044 	載 	재[note 3] 	jae 	— 	—
+1048 	極 	극[note 3] 	geuk 	— 	—
+1052 or 1056 	恒河沙 	항하사[note 4] 	hanghasa 	— 	—
+1056 or 1064 	阿僧祇 	아승기[note 4] 	aseunggi 	— 	—
+1060 or 1072 	那由他 	나유타[note 4] 	nayuta 	— 	—
+1064 or 1080 	不可思議 	불가사의[note 4] 	bulgasaui 	— 	—
+1068 or 1088 	無量大數 	무량대수[note 4] 	muryangdaesu 	— 	—
