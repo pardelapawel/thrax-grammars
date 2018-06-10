@@ -32,12 +32,9 @@ ones = zero | ones_1_9;
 add_ten = "".utf8 : "십".utf8;
 tens = Optimize[
     (
-        (
-            ("1".utf8 : "".utf8)
-            | ones_2_9
-        )
+        (delone | ones_2_9)
         add_ten
-        ("0".utf8 : "".utf8)
+        delzero
     )
     | (ones_1_9 add_ten ones_1_9)
 ];
