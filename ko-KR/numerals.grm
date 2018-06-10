@@ -1,20 +1,59 @@
-import 'byte.grm' as bytelib;
+digit = "1".utf8
+    | "2".utf8
+    | "3".utf8
+    | "4".utf8
+    | "5".utf8
+    | "6".utf8
+    | "7".utf8
+    | "8".utf8
+    | "9".utf8
+    | "0".utf8;
 
-one = "1" : "일";
-ones_wo_one = Optimize[
-    ("2" : "이")
-    | ("3" : "삼")
-    | ("4" : "사")
-    | ("5" : "오")
-    | ("6" : ("육" | "륙"))
-    | ("7" : "칠")
-    | ("8" : "팔")
-    | ("9" : "구")
+zero = "0".utf8 : "영".utf8;
+one = "1".utf8 : "일".utf8;
+delone = "1".utf8 : "".utf8;
+ones_2_9 = Optimize[
+    ("2".utf8 : "이".utf8)
+    | ("3".utf8 : "삼".utf8)
+    | ("4".utf8 : "사".utf8)
+    | ("5".utf8 : "오".utf8)
+    | ("6".utf8 : ("육".utf8 | "륙".utf8))
+    | ("7".utf8 : "칠".utf8)
+    | ("8".utf8 : "팔".utf8)
+    | ("9".utf8 : "구".utf8)
 ];
 
-ones = one | ones_wo_one;
-SinoCardinal = ones;
+ones_1_9 = Optimize[
+    one | ones_2_9
+];
+ones = zero | ones_1_9;
 
-NativeCardinal = "";
+add_ten = "".utf8 : "십".utf8;
+tens = Optimize[
+    (
+        (
+            ("1".utf8 : "".utf8)
+            | ones_2_9
+        )
+        add_ten
+        ("0".utf8 : "".utf8)
+    )
+    | (ones_1_9 add_ten ones_1_9)
+];
 
-export CARDINAL = SinoCardinal;
+SinoCardinal = ones | tens;
+
+NativeCardinal = "".utf8;
+
+removeLeadingZeros = Optimize[CDRewrite[
+    "0".utf8+ : "".utf8,
+    "[BOS]".utf8,
+    digit+,
+    digit*
+    ]
+];
+
+export CARDINAL =  removeLeadingZeros @ Optimize[SinoCardinal];
+
+
+
