@@ -45,15 +45,9 @@ tens = Optimize[
 add_hundred = "".utf8 : "백".utf8;
 hundreds = Optimize[
     (
-        (
-            ("1".utf8 : "".utf8)
-            | ones_2_9
-        )
+        (delone | ones_2_9)
         add_hundred
-        (
-            ("0".utf8 : "".utf8)
-            (delzero | ones_1_9)
-        )
+        (delzero (delzero | ones_1_9))
     )
     | (ones_1_9 delzero? add_hundred tens)
 ];
