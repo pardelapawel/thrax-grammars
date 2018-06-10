@@ -11,6 +11,7 @@ digit = "1".utf8
 
 zero = "0".utf8 : "영".utf8;
 one = "1".utf8 : "일".utf8;
+delzero = "0".utf8 : "".utf8;
 delone = "1".utf8 : "".utf8;
 ones_2_9 = Optimize[
     ("2".utf8 : "이".utf8)
