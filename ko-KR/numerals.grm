@@ -42,7 +42,23 @@ tens = Optimize[
     | (ones_1_9 add_ten ones_1_9)
 ];
 
-SinoCardinal = ones | tens;
+add_hundred = "".utf8 : "백".utf8;
+hundreds = Optimize[
+    (
+        (
+            ("1".utf8 : "".utf8)
+            | ones_2_9
+        )
+        add_hundred
+        (
+            ("0".utf8 : "".utf8)
+            (delzero | ones_1_9)
+        )
+    )
+    | (ones_1_9 delzero? add_hundred tens)
+];
+
+SinoCardinal = ones | tens | hundreds;
 
 NativeCardinal = "".utf8;
 
