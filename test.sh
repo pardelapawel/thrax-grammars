@@ -3,6 +3,8 @@ FAR=$1
 RULE=$2
 
 function showUsage {
+    <&2 echo "Runs lines through a given transducer"
+    <&2 echo "Halts at first error"
     <&2 echo "Usage:"
     <&2 echo "$0 path/to/file.far rule < input.txt"
 }
