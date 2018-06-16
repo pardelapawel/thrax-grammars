@@ -36,7 +36,7 @@ tens = Optimize[
         add_ten
         delzero
     )
-    | (ones_1_9 add_ten ones_1_9)
+    | ((delone | ones_2_9) add_ten ones_1_9)
 ];
 
 add_hundred = "".utf8 : "백".utf8;
