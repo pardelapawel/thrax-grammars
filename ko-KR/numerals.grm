@@ -63,15 +63,18 @@ SinoCardinal = ones | tens | hundreds | thousands;
 
 NativeCardinal = "".utf8;
 
-removeLeadingZeros = Optimize[CDRewrite[
-    "0".utf8+ : "".utf8,
-    "[BOS]".utf8,
-    digit+,
-    digit*
+removeLeadingZeros = Optimize[
+    CDRewrite[
+        "0".utf8+ : "".utf8,
+        "[BOS]".utf8,
+        digit+,
+        digit*
     ]
 ];
 
-export CARDINAL =  removeLeadingZeros @ Optimize[SinoCardinal];
-
-
+export CARDINAL =  Optimize[SinoCardinal];
+export MAIN =  Optimize[
+    removeLeadingZeros
+    @ CARDINAL
+];
 
