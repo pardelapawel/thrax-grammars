@@ -1,0 +1,74 @@
+import 'common/byte.grm' as bytelib;
+
+space = bytelib.kSpace;
+star = bytelib.kGraph | bytelib.kSpace;
+
+#vowels
+a = "ㅏ" : "a";
+ae = "ㅐ" : "ae";
+ya = "ㅑ" : "ya";
+yae = "ㅒ" : "yae";
+eo = "ㅓ" : "eo";
+e = "ㅔ" : "e";
+yeo = "ㅕ" : "yeo";
+ye = "ㅖ" : "ye";
+o = "ㅗ" : "o";
+wa = "ㅘ" : "wa";
+wae = "ㅙ" : "wae";
+oe = "ㅚ" : "oe";
+yo = "ㅛ" : "yo";
+u = "ㅜ" : "u";
+wo = "ㅝ" : "wo";
+we = "ㅞ" : "we";
+wi = "ㅟ" : "wi";
+yu = "ㅠ" : "yu";
+eu = "ㅡ" : "eu";
+ui = "ㅢ" : "ui";
+i = "ㅣ" : "i";
+
+vowels = a | ae | ya | yae | eo | e | yeo | ye | o | wa | wae | oe | yo | u | wo | we | wi | yu | eu | ui | i;
+
+#consonants
+#initial
+i_g = "ㄱ" : "g";
+i_kk = "ㄲ" : "kk";
+i_n = "ㄴ" : "n";
+i_d = "ㄷ" : "d";
+i_tt = "ㄸ" : "tt";
+i_r = "ㄹ" : "r";
+i_m = "ㅁ" : "m";
+i_b = "ㅂ" : "b";
+i_pp = "ㅃ" : "pp";
+i_s = "ㅅ" : "s";
+i_ss = "ㅆ" : "ss";
+i_empty = "ㅇ" : "–";
+i_j = "ㅈ" : "j";
+i_jj = "ㅉ" : "jj";
+i_ch = "ㅊ" : "ch";
+i_k = "ㅋ" : "k";
+i_t = "ㅌ" : "t";
+i_p = "ㅍ" : "p";
+i_h = "ㅎ" : "h";
+initials = i_g | i_kk | i_n | i_d | i_tt | i_r | i_m | i_b | i_pp | i_s | i_ss | i_empty | i_j | i_jj | i_ch | i_k | i_t | i_p | i_h;
+
+
+#final
+f_k = ("ㅋ" | "ㄲ" | "ㄱ") : "k";
+f_n = "ㄴ" : "n";
+f_t = ("ㅈ" | "ㅊ" | "ㅌ" | "ㅎ" | "ㅆ" | "ㅅ" | "ㄷ") : "t";
+#f_– = "ㄸ" : "–";
+f_l = "ㄹ" : "l";
+f_m = "ㅁ" : "m";
+f_p = ("ㅍ" | "ㅂ") : "p";
+#f_– = "ㅃ" : "–";
+f_ng = "ㅇ" : "ng";
+#f_– = "ㅉ" : "–";
+finals = f_k | f_n | f_t | f_l | f_m | f_p | f_ng;
+
+consonants = initials | finals;
+
+#can be used to dinamically create syllables
+jamo = vowels | consonants;
+
+export MAIN = (jamo | space)+;
+#export MAIN = star*;
