@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
+#Idea taken from: https://en.wikipedia.org/wiki/Korean_language_and_computers#Hangul_in_Unicode
+
 def generateSyllableCode(initial, medial, final = 0)
-    syllableCode = (initial * 588 + medial * 28 + final) + 44032
-    #puts "init: #{initial} medial: #{medial} fin: #{final} = #{syllableCode}"
-    return syllableCode
+    return (initial * 588) + (medial * 28) + final + 44032
 end
 
 def code2utf8(code)
@@ -13,36 +13,50 @@ def generateSyllable(initial, medial, final)
     return code2utf8(generateSyllableCode(initial, medial, final))
 end
 
-def to_16(number)
-    return number.to_s(10).to_i(16)
+def composeSyllable(initial, medial, final)
+    jamos = [initial, medial, final]
+        .map{|decimalShift| decimalShift.to_s(16)}
+        .zip(%w(1100 1161 11A7))
+        .map{|jamoShift,jamoStart| jamoShift.hex + jamoStart.hex}
+        .map{|jamoCode| code2utf8(jamoCode)}
+    jamos.pop if final == 0 # if not dropped creates a weird symbol
+    return jamos
 end
 
-def to_16_straight(number)
-    return number.to_s(16).to_i(16)
+def generateThraxBody(initial, medial, final=0)
+    generated = generateSyllable(initial, medial, final)
+    composed = composeSyllable(initial, medial, final)
+    return "\"#{generated}\" : (\"#{composed.join('" "')}\")"
 end
 
-def generateThraxLine(initial, medial, final=0)
-    initHex = to_16_straight(initial) + to_16(1100)
-    medHex = to_16_straight(medial) + to_16(1162)
-    finHex = to_16_straight(final) + to_16("11A8".hex)
-    return "var = (\"#{code2utf8(initHex)}\" \"#{code2utf8(medHex)}\" \"#{code2utf8(finHex)}\") : \"#{generateSyllable(initial, medial, final)}\""
+def generateThraxRule(name, body)
+    return "#{name} = Optimize[#{body}];"
 end
 
-#puts "한 is #{generateSyllableCode(18, 0, 4)} in unicode: #{generateSyllable(18, 0, 4)}"
+def generateExportedThraxRule(name, body)
+    return "export #{name} = Optimize[#{body}];"
+end
 
-#puts "\u1100"
-#puts code2utf8(1100.to_s.to_i(16))
-
-#__END__
-
-medial = 0
-final = 0
+initialRules = []
 for initial in 0..18 do
-    #for medial in 0..20 do
-        #for final in 0..27 do
-            puts generateThraxLine(initial, medial, final)
+    medialRules = []
+    for medial in 0..20 do
+        finalRules = []
+        for final in 0..26 do
+            ruleName = "I#{initial}M#{medial}F#{final}"
+            puts generateThraxRule(ruleName, generateThraxBody(initial, medial, final))
+            finalRules.push(ruleName)
         end
-#    end
-#end
+        ruleName = "I#{initial}M#{medial}F"
+        puts generateExportedThraxRule(ruleName, finalRules.join(" | "))
+        medialRules.push(ruleName)
+    end
+    ruleName = "I#{initial}MF"
+    puts generateExportedThraxRule(ruleName, medialRules.join(" | "))
+    initialRules.push(ruleName)
+end
+ruleName = "IMF"
+puts generateExportedThraxRule(ruleName, initialRules.join(" | "))
+puts generateExportedThraxRule("MAIN", ruleName)
 
 
