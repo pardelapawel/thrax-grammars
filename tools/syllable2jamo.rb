@@ -39,21 +39,16 @@ end
 
 initialRules = []
 for initial in 0..18 do
-    medialRules = []
     for medial in 0..20 do
-        finalRules = []
+        finalBodies = []
         for final in 0..26 do
-            ruleName = "I#{initial}M#{medial}F#{final}"
-            puts generateThraxRule(ruleName, generateThraxBody(initial, medial, final))
-            finalRules.push(ruleName)
+            finalBodies.push(generateThraxBody(initial, medial, final))
         end
         ruleName = "I#{initial}M#{medial}F"
-        puts generateExportedThraxRule(ruleName, finalRules.join(" | "))
-        medialRules.push(ruleName)
+        puts generateThraxRule(ruleName, "(#{finalBodies.join(")|(")})")
+        initialRules.push(ruleName)
     end
     ruleName = "I#{initial}MF"
-    puts generateExportedThraxRule(ruleName, medialRules.join(" | "))
-    initialRules.push(ruleName)
 end
 ruleName = "IMF"
 puts generateExportedThraxRule(ruleName, initialRules.join(" | "))
