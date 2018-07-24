@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 def generateSyllableCode(initial, medial, final = 0)
     syllableCode = (initial * 588 + medial * 28 + final) + 44032
     #puts "init: #{initial} medial: #{medial} fin: #{final} = #{syllableCode}"
