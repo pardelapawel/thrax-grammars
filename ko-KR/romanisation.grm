@@ -92,6 +92,6 @@ jamo = vowels | consonants;
 
 export romanise = Optimize[syllable2jamo @ jamo+];
 export MAIN = Optimize[
-    (romanise | latin | space)+
+    (romanise | jamo | latin | space)+
 ];
 #export MAIN = star*;
